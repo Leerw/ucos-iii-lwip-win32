@@ -1,0 +1,86 @@
+﻿  app.c
+h:\code\mylwip\lwip\include\lwip\arch.h(99): warning C4005: 'ETXTBSY': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(123): note: see previous definition of 'ETXTBSY'
+h:\code\mylwip\lwip\include\lwip\arch.h(108): warning C4005: 'EDEADLK': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(64): note: see previous definition of 'EDEADLK'
+h:\code\mylwip\lwip\include\lwip\arch.h(109): warning C4005: 'ENAMETOOLONG': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(65): note: see previous definition of 'ENAMETOOLONG'
+h:\code\mylwip\lwip\include\lwip\arch.h(110): warning C4005: 'ENOLCK': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(66): note: see previous definition of 'ENOLCK'
+h:\code\mylwip\lwip\include\lwip\arch.h(111): warning C4005: 'ENOSYS': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(67): note: see previous definition of 'ENOSYS'
+h:\code\mylwip\lwip\include\lwip\arch.h(112): warning C4005: 'ENOTEMPTY': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(68): note: see previous definition of 'ENOTEMPTY'
+h:\code\mylwip\lwip\include\lwip\arch.h(113): warning C4005: 'ELOOP': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(98): note: see previous definition of 'ELOOP'
+h:\code\mylwip\lwip\include\lwip\arch.h(114): warning C4005: 'EWOULDBLOCK': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(124): note: see previous definition of 'EWOULDBLOCK'
+h:\code\mylwip\lwip\include\lwip\arch.h(115): warning C4005: 'ENOMSG': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(106): note: see previous definition of 'ENOMSG'
+h:\code\mylwip\lwip\include\lwip\arch.h(116): warning C4005: 'EIDRM': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(95): note: see previous definition of 'EIDRM'
+h:\code\mylwip\lwip\include\lwip\arch.h(135): warning C4005: 'ENOSTR': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(109): note: see previous definition of 'ENOSTR'
+h:\code\mylwip\lwip\include\lwip\arch.h(136): warning C4005: 'ENODATA': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(104): note: see previous definition of 'ENODATA'
+h:\code\mylwip\lwip\include\lwip\arch.h(137): warning C4005: 'ETIME': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(121): note: see previous definition of 'ETIME'
+h:\code\mylwip\lwip\include\lwip\arch.h(138): warning C4005: 'ENOSR': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(108): note: see previous definition of 'ENOSR'
+h:\code\mylwip\lwip\include\lwip\arch.h(142): warning C4005: 'ENOLINK': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(105): note: see previous definition of 'ENOLINK'
+h:\code\mylwip\lwip\include\lwip\arch.h(146): warning C4005: 'EPROTO': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(118): note: see previous definition of 'EPROTO'
+h:\code\mylwip\lwip\include\lwip\arch.h(149): warning C4005: 'EBADMSG': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(88): note: see previous definition of 'EBADMSG'
+h:\code\mylwip\lwip\include\lwip\arch.h(150): warning C4005: 'EOVERFLOW': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(116): note: see previous definition of 'EOVERFLOW'
+h:\code\mylwip\lwip\include\lwip\arch.h(159): warning C4005: 'EILSEQ': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(75): note: see previous definition of 'EILSEQ'
+h:\code\mylwip\lwip\include\lwip\arch.h(163): warning C4005: 'ENOTSOCK': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(112): note: see previous definition of 'ENOTSOCK'
+h:\code\mylwip\lwip\include\lwip\arch.h(164): warning C4005: 'EDESTADDRREQ': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(93): note: see previous definition of 'EDESTADDRREQ'
+h:\code\mylwip\lwip\include\lwip\arch.h(165): warning C4005: 'EMSGSIZE': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(99): note: see previous definition of 'EMSGSIZE'
+h:\code\mylwip\lwip\include\lwip\arch.h(166): warning C4005: 'EPROTOTYPE': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(120): note: see previous definition of 'EPROTOTYPE'
+h:\code\mylwip\lwip\include\lwip\arch.h(167): warning C4005: 'ENOPROTOOPT': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(107): note: see previous definition of 'ENOPROTOOPT'
+h:\code\mylwip\lwip\include\lwip\arch.h(168): warning C4005: 'EPROTONOSUPPORT': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(119): note: see previous definition of 'EPROTONOSUPPORT'
+h:\code\mylwip\lwip\include\lwip\arch.h(170): warning C4005: 'EOPNOTSUPP': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(114): note: see previous definition of 'EOPNOTSUPP'
+h:\code\mylwip\lwip\include\lwip\arch.h(172): warning C4005: 'EAFNOSUPPORT': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(86): note: see previous definition of 'EAFNOSUPPORT'
+h:\code\mylwip\lwip\include\lwip\arch.h(173): warning C4005: 'EADDRINUSE': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(84): note: see previous definition of 'EADDRINUSE'
+h:\code\mylwip\lwip\include\lwip\arch.h(174): warning C4005: 'EADDRNOTAVAIL': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(85): note: see previous definition of 'EADDRNOTAVAIL'
+h:\code\mylwip\lwip\include\lwip\arch.h(175): warning C4005: 'ENETDOWN': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(100): note: see previous definition of 'ENETDOWN'
+h:\code\mylwip\lwip\include\lwip\arch.h(176): warning C4005: 'ENETUNREACH': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(102): note: see previous definition of 'ENETUNREACH'
+h:\code\mylwip\lwip\include\lwip\arch.h(177): warning C4005: 'ENETRESET': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(101): note: see previous definition of 'ENETRESET'
+h:\code\mylwip\lwip\include\lwip\arch.h(178): warning C4005: 'ECONNABORTED': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(90): note: see previous definition of 'ECONNABORTED'
+h:\code\mylwip\lwip\include\lwip\arch.h(179): warning C4005: 'ECONNRESET': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(92): note: see previous definition of 'ECONNRESET'
+h:\code\mylwip\lwip\include\lwip\arch.h(180): warning C4005: 'ENOBUFS': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(103): note: see previous definition of 'ENOBUFS'
+h:\code\mylwip\lwip\include\lwip\arch.h(181): warning C4005: 'EISCONN': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(97): note: see previous definition of 'EISCONN'
+h:\code\mylwip\lwip\include\lwip\arch.h(182): warning C4005: 'ENOTCONN': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(110): note: see previous definition of 'ENOTCONN'
+h:\code\mylwip\lwip\include\lwip\arch.h(185): warning C4005: 'ETIMEDOUT': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(122): note: see previous definition of 'ETIMEDOUT'
+h:\code\mylwip\lwip\include\lwip\arch.h(186): warning C4005: 'ECONNREFUSED': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(91): note: see previous definition of 'ECONNREFUSED'
+h:\code\mylwip\lwip\include\lwip\arch.h(188): warning C4005: 'EHOSTUNREACH': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(94): note: see previous definition of 'EHOSTUNREACH'
+h:\code\mylwip\lwip\include\lwip\arch.h(189): warning C4005: 'EALREADY': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(87): note: see previous definition of 'EALREADY'
+h:\code\mylwip\lwip\include\lwip\arch.h(190): warning C4005: 'EINPROGRESS': macro redefinition
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\errno.h(96): note: see previous definition of 'EINPROGRESS'
+  mylwip.vcxproj -> H:\Code\mylwip\Debug\mylwip.exe

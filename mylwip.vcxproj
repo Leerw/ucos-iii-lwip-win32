@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="app\app.c" />
+    <ClCompile Include="app\app_hooks.c" />
+    <ClCompile Include="app\http.c" />
+    <ClCompile Include="app\http2.c" />
+    <ClCompile Include="app\os_app_hooks.c" />
+    <ClCompile Include="BSP\bsp.c" />
+    <ClCompile Include="BSP\CPU\cpu_bsp.c" />
+    <ClCompile Include="lwipwin32.c" />
+    <ClCompile Include="lwip\api\api_lib.c" />
+    <ClCompile Include="lwip\api\api_msg.c" />
+    <ClCompile Include="lwip\api\err.c" />
+    <ClCompile Include="lwip\api\netbuf.c" />
+    <ClCompile Include="lwip\api\netdb.c" />
+    <ClCompile Include="lwip\api\netifapi.c" />
+    <ClCompile Include="lwip\api\sockets.c" />
+    <ClCompile Include="lwip\api\tcpip.c" />
+    <ClCompile Include="lwip\arch\queue.c" />
+    <ClCompile Include="lwip\arch\sys_arch.c" />
+    <ClCompile Include="lwip\core\dhcp.c" />
+    <ClCompile Include="lwip\core\dns.c" />
+    <ClCompile Include="lwip\core\init.c" />
+    <ClCompile Include="lwip\core\ipv4\autoip.c" />
+    <ClCompile Include="lwip\core\ipv4\icmp.c" />
+    <ClCompile Include="lwip\core\ipv4\igmp.c" />
+    <ClCompile Include="lwip\core\ipv4\inet.c" />
+    <ClCompile Include="lwip\core\ipv4\inet_chksum.c" />
+    <ClCompile Include="lwip\core\ipv4\ip.c" />
+    <ClCompile Include="lwip\core\ipv4\ip_addr.c" />
+    <ClCompile Include="lwip\core\ipv4\ip_frag.c" />
+    <ClCompile Include="lwip\core\mem.c" />
+    <ClCompile Include="lwip\core\memp.c" />
+    <ClCompile Include="lwip\core\netif.c" />
+    <ClCompile Include="lwip\core\pbuf.c" />
+    <ClCompile Include="lwip\core\raw.c" />
+    <ClCompile Include="lwip\core\snmp\asn1_dec.c" />
+    <ClCompile Include="lwip\core\snmp\asn1_enc.c" />
+    <ClCompile Include="lwip\core\snmp\mib2.c" />
+    <ClCompile Include="lwip\core\snmp\mib_structs.c" />
+    <ClCompile Include="lwip\core\snmp\msg_in.c" />
+    <ClCompile Include="lwip\core\snmp\msg_out.c" />
+    <ClCompile Include="lwip\core\stats.c" />
+    <ClCompile Include="lwip\core\sys.c" />
+    <ClCompile Include="lwip\core\tcp.c" />
+    <ClCompile Include="lwip\core\tcp_in.c" />
+    <ClCompile Include="lwip\core\tcp_out.c" />
+    <ClCompile Include="lwip\core\udp.c" />
+    <ClCompile Include="lwip\netif\etharp.c" />
+    <ClCompile Include="lwip\netif\ethernetif.c" />
+    <ClCompile Include="lwip\netif\loopif.c" />
+    <ClCompile Include="pcap\net_tap.c" />
+    <ClCompile Include="uC-CPU\cpu_core.c" />
+    <ClCompile Include="uC-CPU\Win32\Visual Studio\cpu_c.c" />
+    <ClCompile Include="uC-LIB\lib_ascii.c" />
+    <ClCompile Include="uC-LIB\lib_math.c" />
+    <ClCompile Include="uC-LIB\lib_mem.c" />
+    <ClCompile Include="uC-LIB\lib_str.c" />
+    <ClCompile Include="uCOS-III\Ports\Win32\Visual Studio\os_cpu_c.c" />
+    <ClCompile Include="uCOS-III\Source\os_cfg_app.c" />
+    <ClCompile Include="uCOS-III\Source\os_core.c" />
+    <ClCompile Include="uCOS-III\Source\os_dbg.c" />
+    <ClCompile Include="uCOS-III\Source\os_flag.c" />
+    <ClCompile Include="uCOS-III\Source\os_int.c" />
+    <ClCompile Include="uCOS-III\Source\os_mem.c" />
+    <ClCompile Include="uCOS-III\Source\os_msg.c" />
+    <ClCompile Include="uCOS-III\Source\os_mutex.c" />
+    <ClCompile Include="uCOS-III\Source\os_pend_multi.c" />
+    <ClCompile Include="uCOS-III\Source\os_prio.c" />
+    <ClCompile Include="uCOS-III\Source\os_q.c" />
+    <ClCompile Include="uCOS-III\Source\os_sem.c" />
+    <ClCompile Include="uCOS-III\Source\os_stat.c" />
+    <ClCompile Include="uCOS-III\Source\os_task.c" />
+    <ClCompile Include="uCOS-III\Source\os_tick.c" />
+    <ClCompile Include="uCOS-III\Source\os_time.c" />
+    <ClCompile Include="uCOS-III\Source\os_tmr.c" />
+    <ClCompile Include="uCOS-III\Source\os_var.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="pcap\Lib\wpcap.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="app\app_cfg.h" />
+    <ClInclude Include="app\cpu_cfg.h" />
+    <ClInclude Include="app\includes.h" />
+    <ClInclude Include="app\lib_cfg.h" />
+    <ClInclude Include="app\os_app_hooks.h" />
+    <ClInclude Include="app\os_cfg.h" />
+    <ClInclude Include="app\os_cfg_app.h" />
+    <ClInclude Include="BSP\bsp.h" />
+    <ClInclude Include="uC-CPU\cpu_cache.h" />
+    <ClInclude Include="uC-CPU\cpu_core.h" />
+    <ClInclude Include="uC-CPU\cpu_def.h" />
+    <ClInclude Include="uC-CPU\Win32\Visual Studio\cpu.h" />
+    <ClInclude Include="uC-LIB\lib_ascii.h" />
+    <ClInclude Include="uC-LIB\lib_def.h" />
+    <ClInclude Include="uC-LIB\lib_math.h" />
+    <ClInclude Include="uC-LIB\lib_mem.h" />
+    <ClInclude Include="uC-LIB\lib_str.h" />
+    <ClInclude Include="uCOS-III\Ports\Win32\Visual Studio\os_cpu.h" />
+    <ClInclude Include="uCOS-III\Source\os.h" />
+    <ClInclude Include="uCOS-III\Source\os_type.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{5A2AFB4A-59F3-4F8E-8600-E4CB821278E7}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>mylwip</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v141</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>false</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>.\BSP\CPU;.\BSP;.\app;.\uC-CPU;.\uC-CPU\Win32\Visual Studio;.\uCOS-III\Source;.\uC-LIB;.\uCOS-III\Ports\Win32\Visual Studio;.\lwip\include\ipv4;.\lwip\include;.\pcap\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile />
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,351 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="App">
+      <UniqueIdentifier>{3183763e-b083-4b57-8df2-fa273b21eed4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Console">
+      <UniqueIdentifier>{5a76c945-3c9e-4175-b7a9-c62e1171b818}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lwip">
+      <UniqueIdentifier>{ef1acd51-795b-4d60-86d0-65d6c4d63821}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pcap">
+      <UniqueIdentifier>{57be9050-9e65-44fe-be8b-897829fab7dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lwip\api">
+      <UniqueIdentifier>{857db8af-4bba-4192-a1ed-7f4ce1f5ec5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lwip\arch">
+      <UniqueIdentifier>{3b4c3396-9066-452f-ae54-3c04a6d8056f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lwip\core">
+      <UniqueIdentifier>{b7a52a29-8a06-4894-9add-9386bf8894cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lwip\netif">
+      <UniqueIdentifier>{81c2c579-4c71-4dde-b438-adcb3558c6d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lwip\core\ipv4">
+      <UniqueIdentifier>{bc7a0a86-5ee4-47a7-b0e7-1a307ae1fb3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Lwip\core\snmp">
+      <UniqueIdentifier>{adf08bd0-85b7-429a-88d2-ddfd7c8080fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="uC-LIB">
+      <UniqueIdentifier>{f1ebbbf4-7446-48ef-89ff-f6929f63fe2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="uC-CPU">
+      <UniqueIdentifier>{ed2af3f9-083c-4ed3-8d2c-52a0e018e695}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="uC-CPU\Win32">
+      <UniqueIdentifier>{059c9961-5505-4678-8ed2-2ee5f36e729e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="uCOS-III">
+      <UniqueIdentifier>{b08f9ba1-23e3-45c9-aaf7-94b107f205d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="uCOS-III\Port">
+      <UniqueIdentifier>{ddc5ac38-2f05-41be-9a56-0baebb907c1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="uCOS-III\Source">
+      <UniqueIdentifier>{ea0dd64c-f2b2-4838-b05a-ff343d68fb25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BSP">
+      <UniqueIdentifier>{90a2b928-a454-4e05-a8a5-2e713117476e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BSP\CPU">
+      <UniqueIdentifier>{053ab6a2-d729-46ef-963d-3085446d25e5}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="app\http.c">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="app\http2.c">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="lwipwin32.c">
+      <Filter>Console</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\api\api_lib.c">
+      <Filter>Lwip\api</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\api\api_msg.c">
+      <Filter>Lwip\api</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\api\err.c">
+      <Filter>Lwip\api</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\api\netbuf.c">
+      <Filter>Lwip\api</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\api\netdb.c">
+      <Filter>Lwip\api</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\api\netifapi.c">
+      <Filter>Lwip\api</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\api\sockets.c">
+      <Filter>Lwip\api</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\api\tcpip.c">
+      <Filter>Lwip\api</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\arch\queue.c">
+      <Filter>Lwip\arch</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\arch\sys_arch.c">
+      <Filter>Lwip\arch</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\core\ipv4\autoip.c">
+      <Filter>Lwip\core\ipv4</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\core\ipv4\icmp.c">
+      <Filter>Lwip\core\ipv4</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\core\ipv4\igmp.c">
+      <Filter>Lwip\core\ipv4</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\core\ipv4\inet.c">
+      <Filter>Lwip\core\ipv4</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\core\ipv4\inet_chksum.c">
+      <Filter>Lwip\core\ipv4</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\core\ipv4\ip.c">
+      <Filter>Lwip\core\ipv4</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\core\ipv4\ip_addr.c">
+      <Filter>Lwip\core\ipv4</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\core\ipv4\ip_frag.c">
+      <Filter>Lwip\core\ipv4</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\core\snmp\asn1_dec.c">
+      <Filter>Lwip\core\snmp</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\core\snmp\asn1_enc.c">
+      <Filter>Lwip\core\snmp</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\core\snmp\mib_structs.c">
+      <Filter>Lwip\core\snmp</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\core\snmp\mib2.c">
+      <Filter>Lwip\core\snmp</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\core\snmp\msg_in.c">
+      <Filter>Lwip\core\snmp</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\core\snmp\msg_out.c">
+      <Filter>Lwip\core\snmp</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\core\dhcp.c">
+      <Filter>Lwip\core</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\core\dns.c">
+      <Filter>Lwip\core</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\core\init.c">
+      <Filter>Lwip\core</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\core\mem.c">
+      <Filter>Lwip\core</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\core\memp.c">
+      <Filter>Lwip\core</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\core\netif.c">
+      <Filter>Lwip\core</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\core\pbuf.c">
+      <Filter>Lwip\core</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\core\raw.c">
+      <Filter>Lwip\core</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\core\stats.c">
+      <Filter>Lwip\core</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\core\sys.c">
+      <Filter>Lwip\core</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\core\tcp.c">
+      <Filter>Lwip\core</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\core\tcp_in.c">
+      <Filter>Lwip\core</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\core\tcp_out.c">
+      <Filter>Lwip\core</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\core\udp.c">
+      <Filter>Lwip\core</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\netif\etharp.c">
+      <Filter>Lwip\netif</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\netif\ethernetif.c">
+      <Filter>Lwip\netif</Filter>
+    </ClCompile>
+    <ClCompile Include="lwip\netif\loopif.c">
+      <Filter>Lwip\netif</Filter>
+    </ClCompile>
+    <ClCompile Include="pcap\net_tap.c">
+      <Filter>Pcap</Filter>
+    </ClCompile>
+    <ClCompile Include="app\app.c">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="app\app_hooks.c">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="app\os_app_hooks.c">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="uC-LIB\lib_ascii.c">
+      <Filter>uC-LIB</Filter>
+    </ClCompile>
+    <ClCompile Include="uC-LIB\lib_math.c">
+      <Filter>uC-LIB</Filter>
+    </ClCompile>
+    <ClCompile Include="uC-LIB\lib_mem.c">
+      <Filter>uC-LIB</Filter>
+    </ClCompile>
+    <ClCompile Include="uC-LIB\lib_str.c">
+      <Filter>uC-LIB</Filter>
+    </ClCompile>
+    <ClCompile Include="uC-CPU\cpu_core.c">
+      <Filter>uC-CPU</Filter>
+    </ClCompile>
+    <ClCompile Include="uC-CPU\Win32\Visual Studio\cpu_c.c">
+      <Filter>uC-CPU\Win32</Filter>
+    </ClCompile>
+    <ClCompile Include="uCOS-III\Ports\Win32\Visual Studio\os_cpu_c.c">
+      <Filter>uCOS-III\Port</Filter>
+    </ClCompile>
+    <ClCompile Include="uCOS-III\Source\os_cfg_app.c">
+      <Filter>uCOS-III\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="uCOS-III\Source\os_core.c">
+      <Filter>uCOS-III\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="uCOS-III\Source\os_dbg.c">
+      <Filter>uCOS-III\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="uCOS-III\Source\os_flag.c">
+      <Filter>uCOS-III\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="uCOS-III\Source\os_int.c">
+      <Filter>uCOS-III\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="uCOS-III\Source\os_mem.c">
+      <Filter>uCOS-III\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="uCOS-III\Source\os_msg.c">
+      <Filter>uCOS-III\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="uCOS-III\Source\os_mutex.c">
+      <Filter>uCOS-III\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="uCOS-III\Source\os_pend_multi.c">
+      <Filter>uCOS-III\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="uCOS-III\Source\os_prio.c">
+      <Filter>uCOS-III\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="uCOS-III\Source\os_q.c">
+      <Filter>uCOS-III\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="uCOS-III\Source\os_sem.c">
+      <Filter>uCOS-III\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="uCOS-III\Source\os_stat.c">
+      <Filter>uCOS-III\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="uCOS-III\Source\os_task.c">
+      <Filter>uCOS-III\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="uCOS-III\Source\os_tick.c">
+      <Filter>uCOS-III\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="uCOS-III\Source\os_time.c">
+      <Filter>uCOS-III\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="uCOS-III\Source\os_tmr.c">
+      <Filter>uCOS-III\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="uCOS-III\Source\os_var.c">
+      <Filter>uCOS-III\Source</Filter>
+    </ClCompile>
+    <ClCompile Include="BSP\CPU\cpu_bsp.c">
+      <Filter>BSP\CPU</Filter>
+    </ClCompile>
+    <ClCompile Include="BSP\bsp.c">
+      <Filter>BSP</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="pcap\Lib\wpcap.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="app\app_cfg.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="app\cpu_cfg.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="app\includes.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="app\lib_cfg.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="app\os_app_hooks.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="app\os_cfg.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="app\os_cfg_app.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="uC-LIB\lib_ascii.h">
+      <Filter>uC-LIB</Filter>
+    </ClInclude>
+    <ClInclude Include="uC-LIB\lib_def.h">
+      <Filter>uC-LIB</Filter>
+    </ClInclude>
+    <ClInclude Include="uC-LIB\lib_math.h">
+      <Filter>uC-LIB</Filter>
+    </ClInclude>
+    <ClInclude Include="uC-LIB\lib_mem.h">
+      <Filter>uC-LIB</Filter>
+    </ClInclude>
+    <ClInclude Include="uC-LIB\lib_str.h">
+      <Filter>uC-LIB</Filter>
+    </ClInclude>
+    <ClInclude Include="uC-CPU\cpu_cache.h">
+      <Filter>uC-CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="uC-CPU\cpu_core.h">
+      <Filter>uC-CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="uC-CPU\cpu_def.h">
+      <Filter>uC-CPU</Filter>
+    </ClInclude>
+    <ClInclude Include="uC-CPU\Win32\Visual Studio\cpu.h">
+      <Filter>uC-CPU\Win32</Filter>
+    </ClInclude>
+    <ClInclude Include="uCOS-III\Ports\Win32\Visual Studio\os_cpu.h">
+      <Filter>uCOS-III\Port</Filter>
+    </ClInclude>
+    <ClInclude Include="uCOS-III\Source\os.h">
+      <Filter>uCOS-III\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="uCOS-III\Source\os_type.h">
+      <Filter>uCOS-III\Source</Filter>
+    </ClInclude>
+    <ClInclude Include="BSP\bsp.h">
+      <Filter>BSP</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

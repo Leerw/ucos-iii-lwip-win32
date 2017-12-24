@@ -135,13 +135,13 @@ static  void  AppTaskStart (void *p_arg)
 #endif
 
     APP_TRACE_DBG(("uCOS-III is Running...\n\r"));
-	APP_TRACE_DBG(("Web server is starting...\n"));
-	APP_TRACE_DBG(("Opening network interfaces...\n"));
-	APP_TRACE_DBG(("Your Wifi interface is N0.4...\n"));
-	if (ERR_IF == open_tap())
+    APP_TRACE_DBG(("Web server is starting...\n"));
+    APP_TRACE_DBG(("Opening network interfaces...\n"));
+    APP_TRACE_DBG(("Your Wifi interface is N0.4...\n"));
+    if (ERR_IF == open_tap())
 		exit(1);
 
-	init();
+    init();
 
     while (DEF_ON) {                                            /* Task body, always written as an infinite loop.       */
         OSTimeDlyHMSM(0, 0, 1, 0,

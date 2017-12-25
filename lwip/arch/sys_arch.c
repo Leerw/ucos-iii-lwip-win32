@@ -47,7 +47,7 @@ sys_sem_t sys_sem_new(u8_t count)
   if (err != OS_ERR_NONE)
   {
 	  fprintf(stderr, "CreateSemaphore error: %d\n", err);
-	  return SYS_SEM_NULL);
+	  return SYS_SEM_NULL;
   }
   
   return sem;
@@ -66,7 +66,7 @@ void sys_sem_free(sys_sem_t sem)
   *							modified sys_sem_free
   *                           to adapt ucos-iii
   *                           date: 2017-12-25
-  *                               by: leerw
+  *                              by: leerw
   **********************************************************************/
 
   /*********************************************************************
@@ -130,7 +130,7 @@ u32_t sys_arch_sem_wait(sys_sem_t sem, u32_t timeout)
 
   /**********************************************************************
   OS_ERR err;
-  OSAPISemWait(sem, timeout, OS_OPT_PEND_NON_BLOCKING, NULL, &err);
+  OSAPISemWait(sem, timeout, OS_OPT_PEND_NON_BLOCKING, (CPU_TS *)0, &err);
   switch (err)
   {
 	case OS_ERR_NONE:
@@ -149,12 +149,47 @@ u32_t sys_arch_sem_wait(sys_sem_t sem, u32_t timeout)
 sys_mbox_t sys_mbox_new(int size)
 {
   return queue_create();
+
+  /**********************************************************************
+  *                        modified sys_mbox_new
+  *						    with opt none blocking
+  *                               by: leerw
+  *                           date: 2017-12-25
+  ***********************************************************************/
+  /**********************************************************************
+  OS_Q *p_q;
+  CPU_CHAR *name = "";
+  size = (OS_MSG_QTY)(size);
+  OS_ERR err;
+  OSAPIMboxNew(p_q, name, size, err);
+  if (err != OS_ERR_NONE)
+  {
+	  sprintf(stderr, "sys_mbox was created failed! The error is %d\n", err);
+  }
+  return p_q;
+  ***********************************************************************/
 }
 
 /*----------------------------------------------------------------------*/
 void sys_mbox_free(sys_mbox_t mbox)
 {
   queue_free(mbox);
+
+  /**********************************************************************
+  *                        modified sys_mbox_free
+  *						    with opt none blocking
+  *                               by: leerw
+  *                           date: 2017-12-25
+  ***********************************************************************/
+
+  /**********************************************************************
+  OS_ERR err;
+  OSAPIMboxFree(mbox, OS_OPT_DEL_ALWAYS, &err);
+  if (err != OS_ERR_NONE)
+  {
+	  sprintf(stderr, "sys_mbox was freed failed! The error is %d\n", err);
+  }
+  ***********************************************************************/
 }
 
 /*----------------------------------------------------------------------*/
@@ -167,6 +202,24 @@ err_t sys_mbox_trypost(sys_mbox_t mbox, void *msg)
 {
   queue_push(mbox, msg);
   return ERR_OK;
+
+  /**********************************************************************
+  *                        modified sys_mbox_trypost
+  *						    with opt none blocking
+  *                               by: leerw
+  *                           date: 2017-12-25
+  ***********************************************************************/
+
+  /**********************************************************************
+  OS_ERR err;
+  OSAPIMboxTryPost(mbox, msg, sizeof msg, OS_OPT_POST_FIFO, &err);
+  if (err != OS_ERR_NONE)
+  {
+	  sprintf(stderr, "msg was tried to post failed! The error is %d\n", err);
+	  return err;
+  }
+  return ERR_OK;
+  ***********************************************************************/
 }
 
 /*----------------------------------------------------------------------*/
@@ -176,6 +229,23 @@ u32_t sys_arch_mbox_fetch(sys_mbox_t mbox, void **msg, u32_t timeout)
   if (*msg == NULL)
     return SYS_ARCH_TIMEOUT;
   return 0;
+
+  /**********************************************************************
+  *                        modified sys_mbox_trypost
+  *						    with opt none blocking
+  *                               by: leerw
+  *                           date: 2017-12-25
+  ***********************************************************************/
+  /**********************************************************************
+  OS_ERR err;
+  *msg = OSAPIMboxFetch(mbox, timeout, OS_OPT_PEND_BLOCKING, sizeof(*msg), (CPU_TS *)0, &err);
+  if (err == OS_ERR_TIMEOUT || *msg == (void *)0)
+  {
+	  return SYS_ARCH_TIMEOUT;
+  }
+  return 0;
+  ***********************************************************************/
+
 }
 
 u32_t sys_arch_mbox_tryfetch(sys_mbox_t mbox, void **msg)

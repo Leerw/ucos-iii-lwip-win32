@@ -55,6 +55,9 @@
     <Filter Include="BSP\CPU">
       <UniqueIdentifier>{053ab6a2-d729-46ef-963d-3085446d25e5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="uCOS-III\OSAPI">
+      <UniqueIdentifier>{2380b9e8-d053-4232-b3da-babd3af337e9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="app\http.c">
@@ -282,6 +285,9 @@
     <ClCompile Include="BSP\bsp.c">
       <Filter>BSP</Filter>
     </ClCompile>
+    <ClCompile Include="osapi.c">
+      <Filter>uCOS-III\OSAPI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Library Include="pcap\Lib\wpcap.lib" />
@@ -346,6 +352,9 @@
     </ClInclude>
     <ClInclude Include="BSP\bsp.h">
       <Filter>BSP</Filter>
+    </ClInclude>
+    <ClInclude Include="osapi.h">
+      <Filter>uCOS-III\OSAPI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

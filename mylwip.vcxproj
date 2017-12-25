@@ -68,6 +68,7 @@
     <ClCompile Include="lwip\netif\etharp.c" />
     <ClCompile Include="lwip\netif\ethernetif.c" />
     <ClCompile Include="lwip\netif\loopif.c" />
+    <ClCompile Include="osapi.c" />
     <ClCompile Include="pcap\net_tap.c" />
     <ClCompile Include="uC-CPU\cpu_core.c" />
     <ClCompile Include="uC-CPU\Win32\Visual Studio\cpu_c.c" />
@@ -107,6 +108,7 @@
     <ClInclude Include="app\os_cfg.h" />
     <ClInclude Include="app\os_cfg_app.h" />
     <ClInclude Include="BSP\bsp.h" />
+    <ClInclude Include="osapi.h" />
     <ClInclude Include="uC-CPU\cpu_cache.h" />
     <ClInclude Include="uC-CPU\cpu_core.h" />
     <ClInclude Include="uC-CPU\cpu_def.h" />
@@ -192,7 +194,7 @@
       <SDLCheck>false</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.\BSP\CPU;.\BSP;.\app;.\uC-CPU;.\uC-CPU\Win32\Visual Studio;.\uCOS-III\Source;.\uC-LIB;.\uCOS-III\Ports\Win32\Visual Studio;.\lwip\include\ipv4;.\lwip\include;.\pcap\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\BSP\CPU;.\BSP;.\app;.\uC-CPU;.\uC-CPU\Win32\Visual Studio;.\uCOS-III\Source;.\uC-LIB;.\uCOS-III\Ports\Win32\Visual Studio;.\lwip\include\ipv4;.\lwip\include;.\pcap\Include;.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PrecompiledHeaderFile />
     </ClCompile>
     <Link>

@@ -10,6 +10,8 @@
 #include "arch/sys_arch.h"
 #include "arch/queue.h"
 
+#include "osapi.h"
+
 static struct sys_timeouts lwip_timeouts[LWIP_TASK_MAX + 1];
 
 void sys_init(void)
@@ -29,6 +31,29 @@ sys_sem_t sys_sem_new(u8_t count)
     fprintf(stderr, "CreateSemaphore error: %d\n", GetLastError());
     return SYS_SEM_NULL;
   }
+
+  /*********************************************************************
+  *							modified sys_sem_new
+  *                           to adapt ucos-iii
+  *                           date: 2017-12-25
+  *                               by: leerw
+  **********************************************************************/
+  
+  /**********************************************************************
+  OS_SEM sem;
+  OS_ERR err;
+  CPU_CHAR* sem_name = "";
+  OSAPISemNew(&sem, sem_name, (OS_SEM_CTR) count, &err);
+  if (err != OS_ERR_NONE)
+  {
+	  fprintf(stderr, "CreateSemaphore error: %d\n", err);
+	  return SYS_SEM_NULL);
+  }
+  
+  return sem;
+
+  ***********************************************************************/
+  
   return sem;
 }
 
@@ -36,6 +61,22 @@ sys_sem_t sys_sem_new(u8_t count)
 void sys_sem_free(sys_sem_t sem)
 {
   CloseHandle(sem);
+
+  /*********************************************************************
+  *							modified sys_sem_free
+  *                           to adapt ucos-iii
+  *                           date: 2017-12-25
+  *                               by: leerw
+  **********************************************************************/
+
+  /*********************************************************************
+  OS_ERR err;
+  OS_ERR time_err;
+  while (0 != OSSemDel(sem, OS_OPT_DEL_ALWAYS, &err))
+  {
+	  OSTimeDlyHMSM(0, 0, 0, 100, OS_OPT_TIME_DLY, &time_err);
+  }
+  **********************************************************************/
 }
 
 /*----------------------------------------------------------------------*/
@@ -45,6 +86,23 @@ void sys_sem_signal(sys_sem_t sem)
   {
     fprintf(stderr, "ReleaseSemaphore error: %d\n", GetLastError());
   }
+
+  /*********************************************************************
+  *							modified sys_sem_signal
+  *                           to adapt ucos-iii
+  *                           date: 2017-12-25
+  *                               by: leerw
+  **********************************************************************/
+
+  /*********************************************************************
+  OS_ERR err;
+  OSAPISemSend(sem, OS_OPT_POST_1, &err);
+  if (err != OS_ERR_NONE)
+  {
+	  fprintf(stderr, "ReleaseSemaphore error: %d\n", err);
+  }
+
+  **********************************************************************/
 }
 
 
@@ -61,6 +119,29 @@ u32_t sys_arch_sem_wait(sys_sem_t sem, u32_t timeout)
   default:
     return SYS_ARCH_TIMEOUT;
   }
+
+
+  /**********************************************************************
+  *                        modified sys_arch_sem_wait
+  *						    with opt none blocking
+  *                               by: leerw
+  *                           date: 2017-12-25
+  ***********************************************************************/
+
+  /**********************************************************************
+  OS_ERR err;
+  OSAPISemWait(sem, timeout, OS_OPT_PEND_NON_BLOCKING, NULL, &err);
+  switch (err)
+  {
+	case OS_ERR_NONE:
+	  return ERR_OK;
+	default:
+	  return SYS_ARCH_TIMEOUT;
+  }
+  
+  ***********************************************************************/
+  
+  
 }
 
 

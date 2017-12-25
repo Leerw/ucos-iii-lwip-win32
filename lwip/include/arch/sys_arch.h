@@ -9,8 +9,21 @@
 #define LWIP_TASK_MAX    5	//max number of lwip tasks
 #define LWIP_START_PRIO  -1   //first prio of lwip tasks
 
+/*********************************************************
+*                modified by leerw
+*                 date: 2017-12-25
+**********************************************************/
+#define HANDLE OS_SEM
+/*********************************************************/
 typedef HANDLE sys_sem_t;
+/*********************************************************
 typedef struct queue *sys_mbox_t;
+**********************************************************/
+/*********************************************************
+*                modified by leerw
+*                 date: 2017-12-25
+**********************************************************/
+typedef OS_Q   *sys_mbox_t;
 typedef HANDLE sys_thread_t;
 
 #define SYS_MBOX_NULL   (sys_mbox_t)0

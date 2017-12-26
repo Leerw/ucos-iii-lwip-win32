@@ -13,6 +13,7 @@
 #include "osapi.h"
 
 static struct sys_timeouts lwip_timeouts[LWIP_TASK_MAX + 1];
+CPU_STK T_LWIP_THREAD_STK[LWIP_TASK_MAX][LWIP_STK_SIZE];
 
 void sys_init(void)
 {
@@ -25,12 +26,13 @@ void sys_init(void)
 sys_sem_t sys_sem_new(u8_t count)
 {
   sys_sem_t sem = CreateSemaphore(NULL, count, MAXLONG, NULL);
-  
+  /********************************************************************
   if (sem == INVALID_HANDLE_VALUE) 
   {
     fprintf(stderr, "CreateSemaphore error: %d\n", GetLastError());
     return SYS_SEM_NULL;
   }
+  *********************************************************************/
 
   /*********************************************************************
   *							modified sys_sem_new
@@ -289,4 +291,38 @@ sys_thread_t sys_thread_new(char *name, void (* thread)(void *arg), void *arg, i
     fprintf(stderr, "SetThreadPriority failed with %d\n", GetLastError());
   
   return t;
+
+  /**********************************************************************
+  *                        modified _beginthreadex
+  *						   to ucos-iii OSTaskCreate
+  *                               by: leerw
+  *                           date: 2017-12-26
+  ***********************************************************************/
+
+  /**********************************************************************
+  sys_thread_t t;
+  OS_ERR err;
+  if (prio > 0 && prio <= LWIP_TASK_MAX)
+  {
+	  OSAPISysThreadNew(t,
+		  name,
+		  arg,
+		  0,
+		  LWIP_START_PRIO + (prio - 1),
+		  &T_LWIP_THREAD_STK[prio - 1][LWIP_STK_SIZE - 1],
+		  stacksize / 10u,
+		  stacksize,
+		  (OS_MSG_QTY)0u,
+		  (OS_TICK)0u,
+		  (void       *)0,
+		  (OS_OPT)(OS_OPT_TASK_STK_CHK | OS_OPT_TASK_STK_CLR),
+		  (OS_ERR     *)&err);
+	  if (err != OS_ERR_NONE)
+	  {
+		  fprintf(stderr, "CreateThread failed with %d.\n", GetLastError());
+		  ExitProcess(3);
+	  }
+  }
+  return t;
+  **************************************************************************/
 }

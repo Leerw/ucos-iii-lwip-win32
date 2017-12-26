@@ -24,8 +24,23 @@ typedef struct queue *sys_mbox_t;
 *                 date: 2017-12-25
 **********************************************************/
 typedef OS_Q   *sys_mbox_t;
+/*********************************************************
 typedef HANDLE sys_thread_t;
-
+**********************************************************/
+/**********************************************************************************
+*                          about this sys_thread_t                                *
+*                           in the sys_arch.txt                                   *
+* Starts a new thread named "name" with priority "prio" that will begin its       *
+* execution in the function "thread()". The "arg" argument will be passed as an   *
+* argument to the thread() function. The stack size to used for this thread is    *
+* the "stacksize" parameter. The id of the new thread is returned. Both the id    *
+* and the priority are system dependent.                                          *
+*                 I defined the sys_thread_t as the pointer to OS_TCB             *
+*                            annotated by leerw                                   *
+*                             date: 2017-12-26                                    *
+***********************************************************************************
+*/
+typedef OS_TCB* sys_thread_t;
 #define SYS_MBOX_NULL   (sys_mbox_t)0
 #define SYS_SEM_NULL    (sys_sem_t)0
 

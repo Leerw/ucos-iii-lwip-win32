@@ -13,5 +13,7 @@
 #define OSAPIMboxTryPost        OSQPost
 #define OSAPIMboxFetch          OSQPend
 
+#define OSAPISysThreadNew       OSTaskCreate
+
 #endif // !__OS_API_H
 

@@ -26,9 +26,9 @@ void init()
   sys_thread_new("http thread", http_task, NULL, 0, 0);
   //http_init();
 
-  IP4_ADDR(&ip, 192, 168, 1, 102);
-  IP4_ADDR(&mask, 255, 255, 255, 0);
-  IP4_ADDR(&gw, 192, 168, 1, 254);
+  IP4_ADDR(&ip, 192, 168, 22, 144);
+  IP4_ADDR(&mask, 255, 255, 128, 0);
+  IP4_ADDR(&gw, 192, 168, 0, 1);
 
   netif_add(&netif, &ip, &mask, &gw, NULL, ethernetif_init, tcpip_input);
   netif_set_default(&netif);

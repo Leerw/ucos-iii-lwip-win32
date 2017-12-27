@@ -142,7 +142,6 @@ static  void  AppTaskStart (void *p_arg)
 		exit(1);
 
     init();
-
     while (DEF_ON) {                                            /* Task body, always written as an infinite loop.       */
         OSTimeDlyHMSM(0, 0, 1, 0,
                       OS_OPT_TIME_DLY,

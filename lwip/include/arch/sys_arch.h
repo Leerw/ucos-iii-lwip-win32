@@ -4,11 +4,12 @@
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #include <os.h>
+#include <vld.h>
 
-#define LWIP_STK_SIZE      4096
+#define LWIP_STK_SIZE      512
 
 #define LWIP_TASK_MAX    5	//max number of lwip tasks
-#define LWIP_START_PRIO  -1   //first prio of lwip tasks
+#define LWIP_START_PRIO  7   //first prio of lwip tasks
 
 /*********************************************************
 *                modified by leerw

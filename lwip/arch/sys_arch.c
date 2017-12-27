@@ -45,16 +45,16 @@ sys_sem_t sys_sem_new(u8_t count)
   **********************************************************************/
   
 
-  OS_SEM *sem;
+  OS_SEM sem;
   OS_ERR err;
   CPU_CHAR* sem_name = "";
-  OSAPISemNew(sem, sem_name, (OS_SEM_CTR) count, &err);
+  OSAPISemNew(&sem, sem_name, (OS_SEM_CTR) count, &err);
   if (err != OS_ERR_NONE)
   {
 	  fprintf(stderr, "CreateSemaphore error: %d\n", err);
 	  return SYS_SEM_NULL;
   }
-  return sem;
+  return &sem;
 }
 
 /*----------------------------------------------------------------------*/
@@ -163,16 +163,16 @@ sys_mbox_t sys_mbox_new(int size)
   *                           date: 2017-12-25
   ***********************************************************************/
   
-  OS_Q *p_q;
+  OS_Q p_q;
   CPU_CHAR *name = "";
   size = (OS_MSG_QTY)(size);
   OS_ERR err;
-  OSAPIMboxNew(p_q, name, size, &err);
+  OSAPIMboxNew(&p_q, name, size, &err);
   if (err != OS_ERR_NONE)
   {
 	  sprintf(stderr, "sys_mbox was created failed! The error is %d\n", err);
   }
-  return p_q;
+  return &p_q;
   
 }
 
@@ -318,19 +318,18 @@ sys_thread_t sys_thread_new(char *name, void (* thread)(void *arg), void *arg, i
   *                           date: 2017-12-26
   ***********************************************************************/
 
-  
-  sys_thread_t t;
+  OS_TCB t;
   OS_ERR err;
   if (prio > 0 && prio <= LWIP_TASK_MAX)
   {
-	  OSAPISysThreadNew(t,
+	  OSAPISysThreadNew(&t,
 		  name,
+		  thread,
 		  arg,
-		  0,
 		  LWIP_START_PRIO + (prio - 1),
 		  &T_LWIP_THREAD_STK[prio - 1][LWIP_STK_SIZE - 1],
-		  stacksize / 10u,
-		  stacksize,
+		  0,
+		  stacksize + 1,
 		  (OS_MSG_QTY)0u,
 		  (OS_TICK)0u,
 		  (void       *)0,
@@ -338,10 +337,10 @@ sys_thread_t sys_thread_new(char *name, void (* thread)(void *arg), void *arg, i
 		  (OS_ERR     *)&err);
 	  if (err != OS_ERR_NONE)
 	  {
-		  fprintf(stderr, "CreateThread failed with %d.\n", GetLastError());
+		  fprintf(stderr, "CreateThread failed with %d.\n", err);
 		  ExitProcess(3);
 	  }
   }
-  return t;
+  return &t;
   
 }

@@ -61,3 +61,5 @@
 #include "lwip/mem.h"
 #include "lwip/memp.h"
 #include "net_tap.h"
+
+#include <vld.h>

@@ -3,6 +3,7 @@
 
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
+#include <os.h>
 
 #define LWIP_STK_SIZE      4096
 
@@ -15,7 +16,7 @@
 **********************************************************/
 #define HANDLE OS_SEM
 /*********************************************************/
-typedef HANDLE sys_sem_t;
+typedef HANDLE* sys_sem_t;
 /*********************************************************
 typedef struct queue *sys_mbox_t;
 **********************************************************/
@@ -23,7 +24,7 @@ typedef struct queue *sys_mbox_t;
 *                modified by leerw
 *                 date: 2017-12-25
 **********************************************************/
-typedef OS_Q   *sys_mbox_t;
+typedef OS_Q*  sys_mbox_t;
 /*********************************************************
 typedef HANDLE sys_thread_t;
 **********************************************************/

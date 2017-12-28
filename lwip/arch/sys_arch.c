@@ -15,7 +15,7 @@
 static struct sys_timeouts lwip_timeouts[LWIP_TASK_MAX + 1];
 CPU_STK T_LWIP_THREAD_STK[LWIP_TASK_MAX][LWIP_STK_SIZE];
 OS_SEM sempool[100];
-CPU_CHAR* name[100] = { "sem1",  "sem2",  "sem3",  "sem4",  "sem5",  "sem6",  "sem7",  "sem8",  "sem9",  "sem10",
+CPU_CHAR* sem_name[100] = { "sem1",  "sem2",  "sem3",  "sem4",  "sem5",  "sem6",  "sem7",  "sem8",  "sem9",  "sem10",
                         "sem11", "sem12", "sem13", "sem14", "sem15", "sem16", "sem17", "sem18", "sem19", "sem20" ,
                         "sem21", "sem22", "sem23", "sem24", "sem25", "sem26", "sem27", "sem28", "sem29", "sem30" ,
                         "sem31", "sem32", "sem33", "sem34", "sem35", "sem36", "sem37", "sem38", "sem39", "sem40" ,
@@ -38,8 +38,8 @@ static CPU_CHAR sem_ptr = 0;
 *                                             by: leerw                                                   *
 ***********************************************************************************************************
 */
-OS_TCB lwip_tcbs[100];
-CPU_CHAR* name[100] = 
+OS_TCB tcbpool[100];
+CPU_CHAR* tcb_name[100] = 
 {
   "lwip_tcb1",  "lwip_tcb2",  "lwip_tcb3",  "lwip_tcb4",  "lwip_tcb5",  "lwip_tcb6",  "lwip_tcb7",  "lwip_tcb8",  "lwip_tcb9",  "lwip_tcb10",
   "lwip_tcb11", "lwip_tcb12", "lwip_tcb13", "lwip_tcb14", "lwip_tcb15", "lwip_tcb16", "lwip_tcb17", "lwip_tcb18", "lwip_tcb19", "lwip_tcb20",
@@ -85,8 +85,8 @@ sys_sem_t sys_sem_new(u8_t count)
   
 
   OS_ERR err;
-  CPU_CHAR* sem_name = name[sem_ptr];
-  OSAPISemNew(&(sempool[sem_ptr]), sem_name, (OS_SEM_CTR) count, &err);
+  CPU_CHAR* name = sem_name[sem_ptr];
+  OSAPISemNew(&(sempool[sem_ptr]), name, (OS_SEM_CTR) count, &err);
   if (err != OS_ERR_NONE)
   {
 	  fprintf(stderr, "CreateSemaphore error: %d\n", err);
@@ -136,7 +136,7 @@ void sys_sem_signal(sys_sem_t sem)
 
   
   OS_ERR err;
-  OSAPISemSignal(sem, OS_OPT_POST_1, &err);
+  OSAPISemSignal(sem, OS_OPT_POST_NO_SCHED, &err);
   if (err != OS_ERR_NONE)
   {
 	  fprintf(stderr, "ReleaseSemaphore error: %d\n", err);
@@ -173,11 +173,12 @@ u32_t sys_arch_sem_wait(sys_sem_t sem, u32_t timeout)
 
   
   OS_ERR err;
-  OSAPISemWait(sem, timeout, OS_OPT_PEND_NON_BLOCKING, (CPU_TS *)0, &err);
+  OS_SEM_CTR cnt = OSAPISemWait(sem, timeout, OS_OPT_PEND_BLOCKING, (CPU_TS *)0, &err);
   switch (err)
   {
 	case OS_ERR_NONE:
-	  return ERR_OK;
+	  if (cnt)
+	    return ERR_OK;
 	default:
 	  return SYS_ARCH_TIMEOUT;
   }
@@ -191,9 +192,9 @@ u32_t sys_arch_sem_wait(sys_sem_t sem, u32_t timeout)
 /*----------------------------------------------------------------------*/
 sys_mbox_t sys_mbox_new(int size)
 {
-  /**********************************************************************
+  /**********************************************************************/
   return queue_create();
-  ***********************************************************************/
+  /***********************************************************************/
 
   /**********************************************************************
   *                        modified sys_mbox_new
@@ -202,6 +203,7 @@ sys_mbox_t sys_mbox_new(int size)
   *                           date: 2017-12-25
   ***********************************************************************/
   
+  /**********************************************************************
   OS_Q p_q;
   CPU_CHAR *name = NULL;
   size = (OS_MSG_QTY)(size);
@@ -212,15 +214,15 @@ sys_mbox_t sys_mbox_new(int size)
 	  sprintf(stderr, "sys_mbox was created failed! The error is %d\n", err);
   }
   return &p_q;
-  
+  ***********************************************************************/
 }
 
 /*----------------------------------------------------------------------*/
 void sys_mbox_free(sys_mbox_t mbox)
 {
-  /**********************************************************************
+  /**********************************************************************/
   queue_free(mbox);
-  ***********************************************************************/
+  /***********************************************************************/
   /**********************************************************************
   *                        modified sys_mbox_free
   *						    with opt none blocking
@@ -228,14 +230,14 @@ void sys_mbox_free(sys_mbox_t mbox)
   *                           date: 2017-12-25
   ***********************************************************************/
 
-  
+  /**********************************************************************
   OS_ERR err;
   OSAPIMboxFree(mbox, OS_OPT_DEL_ALWAYS, &err);
   if (err != OS_ERR_NONE)
   {
 	  sprintf(stderr, "sys_mbox was freed failed! The error is %d\n", err);
   }
-  
+  ***********************************************************************/
 }
 
 /*----------------------------------------------------------------------*/
@@ -246,10 +248,10 @@ void sys_mbox_post(sys_mbox_t mbox, void *msg)
 
 err_t sys_mbox_trypost(sys_mbox_t mbox, void *msg) 
 {
-  /**********************************************************************
+  /**********************************************************************/
   queue_push(mbox, msg);
   return ERR_OK;
-  ***********************************************************************/
+  /***********************************************************************/
   /**********************************************************************
   *                        modified sys_mbox_trypost
   *						    with opt none blocking
@@ -257,7 +259,7 @@ err_t sys_mbox_trypost(sys_mbox_t mbox, void *msg)
   *                           date: 2017-12-25
   ***********************************************************************/
 
-  
+  /**********************************************************************
   OS_ERR err;
   OSAPIMboxTryPost(mbox, msg, sizeof msg, OS_OPT_POST_FIFO, &err);
   if (err != OS_ERR_NONE)
@@ -266,25 +268,28 @@ err_t sys_mbox_trypost(sys_mbox_t mbox, void *msg)
 	  return err;
   }
   return ERR_OK;
+  ***********************************************************************/
   
 }
 
 /*----------------------------------------------------------------------*/
 u32_t sys_arch_mbox_fetch(sys_mbox_t mbox, void **msg, u32_t timeout)
 {
-  /**********************************************************************
+  /**********************************************************************/
   *msg = queue_pop(mbox, timeout);
   if (*msg == NULL)
     return SYS_ARCH_TIMEOUT;
   return 0;
-  ***********************************************************************/
+  /***********************************************************************/
   /**********************************************************************
   *                        modified sys_mbox_trypost
   *						    with opt none blocking
   *                               by: leerw
   *                           date: 2017-12-25
   ***********************************************************************/
-  
+
+
+  /**********************************************************************
   OS_ERR err;
   *msg = OSAPIMboxFetch(mbox, timeout, OS_OPT_PEND_BLOCKING, sizeof(*msg), (CPU_TS *)0, &err);
   if (err == OS_ERR_TIMEOUT || *msg == (void *)0)
@@ -293,7 +298,7 @@ u32_t sys_arch_mbox_fetch(sys_mbox_t mbox, void **msg, u32_t timeout)
   }
   return 0;
   
-
+  ***********************************************************************/
 }
 
 u32_t sys_arch_mbox_tryfetch(sys_mbox_t mbox, void **msg)
@@ -316,7 +321,7 @@ struct sys_timeouts * sys_arch_timeouts(void)
     return &lwip_timeouts[offset];
   return &lwip_timeouts[LWIP_TASK_MAX];
   **********************************************************************/
-
+  /**********************************************************************/
   OS_PRIO prio;
   prio = OSTCBCurPtr->Prio - LWIP_START_PRIO;
   if (prio >= 0 && prio < LWIP_TASK_MAX)
@@ -324,6 +329,7 @@ struct sys_timeouts * sys_arch_timeouts(void)
 	  return &lwip_timeouts[prio];
   }
   return &lwip_timeouts[LWIP_TASK_MAX];
+  /**********************************************************************/
 }
 
 
@@ -355,31 +361,38 @@ sys_thread_t sys_thread_new(char *name, void (* thread)(void *arg), void *arg, i
   *						   to ucos-iii OSTaskCreate
   *                               by: leerw
   *                           date: 2017-12-26
+  *                            use thread pool
+  *                               by: leerw
+  *                           date: 2017-12-27
   ***********************************************************************/
 
-  OS_TCB t;
   OS_ERR err;
+  if (name == NULL)
+  {
+	  name = tcb_name[tcb_ptr];
+  }
+  stacksize = stacksize;
   if (prio > 0 && prio <= LWIP_TASK_MAX)
   {
-	  OSAPISysThreadNew(&t,
-		  name,
-		  thread,
-		  arg,
-		  LWIP_START_PRIO + (prio - 1),
+	  OSAPISysThreadNew(&tcbpool[tcb_ptr],                            /* tcb                           */
+		  name,                                          /* tcb's name                    */
+		  thread,                                                     /* tcb's function                */
+		  arg,                                                        /* arguments for thread          */
+		  LWIP_START_PRIO + (prio - 1),      
 		  &T_LWIP_THREAD_STK[prio - 1][LWIP_STK_SIZE - 1],
-		  0,
-		  stacksize + 1,
-		  (OS_MSG_QTY)0u,
-		  (OS_TICK)0u,
-		  (void       *)0,
-		  (OS_OPT)(OS_OPT_TASK_STK_CHK | OS_OPT_TASK_STK_CLR),
-		  (OS_ERR     *)&err);
+		  LWIP_STK_SIZE / 10u,
+		  LWIP_STK_SIZE,                                               
+		  (OS_MSG_QTY)0u,                                             /* q_size                        */
+		  (OS_TICK)0u,                                                /* time_quanta                   */
+		  (void       *)0,                                            /* p_ext                         */
+		  (OS_OPT)(OS_OPT_TASK_STK_CHK | OS_OPT_TASK_STK_CLR),        /* opt                           */
+		  (OS_ERR     *)&err);                                        /* err                           */
 	  if (err != OS_ERR_NONE)
 	  {
 		  fprintf(stderr, "CreateThread failed with %d.\n", err);
 		  ExitProcess(3);
 	  }
   }
-  return &t;
+  return &tcbpool[tcb_ptr++];
   
 }

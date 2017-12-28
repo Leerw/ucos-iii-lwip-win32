@@ -89,7 +89,7 @@ int  main (void)
                  (CPU_CHAR   *)"App Task Start",
                  (OS_TASK_PTR ) AppTaskStart,
                  (void       *) 0,
-                 (OS_PRIO     ) APP_TASK_START_PRIO,
+                 (OS_PRIO     ) APP_TASK_START_PRIO + 20,
                  (CPU_STK    *)&AppTaskStartStk[0],
                  (CPU_STK_SIZE) APP_TASK_START_STK_SIZE / 10u,
                  (CPU_STK_SIZE) APP_TASK_START_STK_SIZE,

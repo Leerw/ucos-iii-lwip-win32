@@ -6,7 +6,7 @@
 
 #define OSAPISemNew             OSSemCreate
 #define OSAPISemWait            OSSemPend
-#define OSAPISemSend            OSSemPost
+#define OSAPISemSignal          OSSemPost
 
 #define OSAPIMboxNew            OSQCreate
 #define OSAPIMboxFree           OSQDel

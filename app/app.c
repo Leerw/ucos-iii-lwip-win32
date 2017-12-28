@@ -137,7 +137,7 @@ static  void  AppTaskStart (void *p_arg)
     APP_TRACE_DBG(("uCOS-III is Running...\n\r"));
     APP_TRACE_DBG(("Web server is starting...\n"));
     APP_TRACE_DBG(("Opening network interfaces...\n"));
-    APP_TRACE_DBG(("Your Wifi interface is N0.4...\n"));
+    APP_TRACE_DBG(("Your Wifi interface is N0.3...\n"));
     if (ERR_IF == open_tap())
 		exit(1);
 

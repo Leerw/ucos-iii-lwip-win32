@@ -14,6 +14,18 @@
 
 static struct sys_timeouts lwip_timeouts[LWIP_TASK_MAX + 1];
 CPU_STK T_LWIP_THREAD_STK[LWIP_TASK_MAX][LWIP_STK_SIZE];
+OS_SEM sempool[100];
+CPU_CHAR* name[100] = { "sem1",  "sem2",  "sem3",  "sem4",  "sem5",  "sem6",  "sem7",  "sem8",  "sem9",  "sem10",
+                        "sem11", "sem12", "sem13", "sem14", "sem15", "sem16", "sem17", "sem18", "sem19", "sem20" ,
+                        "sem21", "sem22", "sem23", "sem24", "sem25", "sem26", "sem27", "sem28", "sem29", "sem30" ,
+                        "sem31", "sem32", "sem33", "sem34", "sem35", "sem36", "sem37", "sem38", "sem39", "sem40" ,
+                        "sem41", "sem42", "sem43", "sem44", "sem45", "sem46", "sem47", "sem48", "sem49", "sem50" ,
+                        "sem51", "sem52", "sem53", "sem54", "sem55", "sem56", "sem57", "sem58", "sem59", "sem60" ,
+                        "sem61", "sem62", "sem63", "sem64", "sem65", "sem66", "sem67", "sem68", "sem69", "sem70" ,
+                        "sem71", "sem72", "sem73", "sem74", "sem75", "sem76", "sem77", "sem78", "sem79", "sem80" ,
+                        "sem81", "sem82", "sem83", "sem84", "sem85", "sem86", "sem87", "sem88", "sem89", "sem90" ,
+                        "sem91", "sem92", "sem93", "sem94", "sem95", "sem96", "sem97", "sem98", "sem99", "sem100" };
+static CPU_CHAR sem_ptr = 0;
 
 void sys_init(void)
 {
@@ -45,16 +57,15 @@ sys_sem_t sys_sem_new(u8_t count)
   **********************************************************************/
   
 
-  OS_SEM sem;
   OS_ERR err;
-  CPU_CHAR* sem_name = "";
-  OSAPISemNew(&sem, sem_name, (OS_SEM_CTR) count, &err);
+  CPU_CHAR* sem_name = name[sem_ptr];
+  OSAPISemNew(&(sempool[sem_ptr]), sem_name, (OS_SEM_CTR) count, &err);
   if (err != OS_ERR_NONE)
   {
 	  fprintf(stderr, "CreateSemaphore error: %d\n", err);
 	  return SYS_SEM_NULL;
   }
-  return &sem;
+  return &(sempool[sem_ptr++]);
 }
 
 /*----------------------------------------------------------------------*/
@@ -73,7 +84,7 @@ void sys_sem_free(sys_sem_t sem)
   
   OS_ERR err;
   OS_ERR time_err;
-  while (0 != OSSemDel(&sem, OS_OPT_DEL_ALWAYS, &err))
+  while (0 != OSSemDel(sem, OS_OPT_DEL_ALWAYS, &err))
   {
 	  OSTimeDlyHMSM(0, 0, 0, 100, OS_OPT_TIME_DLY, &time_err);
   }
@@ -98,10 +109,11 @@ void sys_sem_signal(sys_sem_t sem)
 
   
   OS_ERR err;
-  OSAPISemSend(&sem, OS_OPT_POST_1, &err);
+  OSAPISemSignal(sem, OS_OPT_POST_1, &err);
   if (err != OS_ERR_NONE)
   {
-	  fprintf(stderr, "ReleaseSemaphore error: %d\n", err);
+	  //fprintf(stderr, "ReleaseSemaphore error: %d\n", err);
+	  printf("signal filed!\n");
   }
 
   
@@ -134,7 +146,7 @@ u32_t sys_arch_sem_wait(sys_sem_t sem, u32_t timeout)
 
   
   OS_ERR err;
-  OSAPISemWait(&sem, timeout, OS_OPT_PEND_NON_BLOCKING, (CPU_TS *)0, &err);
+  OSAPISemWait(sem, timeout, OS_OPT_PEND_NON_BLOCKING, (CPU_TS *)0, &err);
   switch (err)
   {
 	case OS_ERR_NONE:
@@ -164,7 +176,7 @@ sys_mbox_t sys_mbox_new(int size)
   ***********************************************************************/
   
   OS_Q p_q;
-  CPU_CHAR *name = "";
+  CPU_CHAR *name = NULL;
   size = (OS_MSG_QTY)(size);
   OS_ERR err;
   OSAPIMboxNew(&p_q, name, size, &err);

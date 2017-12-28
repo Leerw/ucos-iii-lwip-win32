@@ -27,6 +27,31 @@ CPU_CHAR* name[100] = { "sem1",  "sem2",  "sem3",  "sem4",  "sem5",  "sem6",  "s
                         "sem91", "sem92", "sem93", "sem94", "sem95", "sem96", "sem97", "sem98", "sem99", "sem100" };
 static CPU_CHAR sem_ptr = 0;
 
+/*
+***********************************************************************************************************
+*                                    as the create a thread function                                      *
+* sys_thread_t sys_thread_new(char *name, void (* thread)(void *arg), void *arg, int stacksize, int prio) *
+* has no argument sys_thread_t, so we cannot return a sys_thread_t in the function because if we create   *
+* a temporary variable thread with type sys_thread_t, we cannoot return a sys_thread_t pointer outside    *
+*                    So I decided to create a thread pool to avoid this problem                           *
+***********************************************************************************************************
+*/
+OS_TCB lwip_tcbs[100];
+CPU_CHAR* name[100] = 
+{
+  "lwip_tcb1",  "lwip_tcb2",  "lwip_tcb3",  "lwip_tcb4",  "lwip_tcb5",  "lwip_tcb6",  "lwip_tcb7",  "lwip_tcb8",  "lwip_tcb9",  "lwip_tcb10",
+  "lwip_tcb11", "lwip_tcb12", "lwip_tcb13", "lwip_tcb14", "lwip_tcb15", "lwip_tcb16", "lwip_tcb17", "lwip_tcb18", "lwip_tcb19", "lwip_tcb20",
+  "lwip_tcb21", "lwip_tcb22", "lwip_tcb23", "lwip_tcb24", "lwip_tcb25", "lwip_tcb26", "lwip_tcb27", "lwip_tcb28", "lwip_tcb29", "lwip_tcb30",
+  "lwip_tcb31", "lwip_tcb32", "lwip_tcb33", "lwip_tcb34", "lwip_tcb35", "lwip_tcb36", "lwip_tcb37", "lwip_tcb38", "lwip_tcb39", "lwip_tcb40",
+  "lwip_tcb41", "lwip_tcb42", "lwip_tcb43", "lwip_tcb44", "lwip_tcb45", "lwip_tcb46", "lwip_tcb47", "lwip_tcb48", "lwip_tcb49", "lwip_tcb50",
+  "lwip_tcb51", "lwip_tcb52", "lwip_tcb53", "lwip_tcb54", "lwip_tcb55", "lwip_tcb56", "lwip_tcb57", "lwip_tcb58", "lwip_tcb59", "lwip_tcb60",
+  "lwip_tcb61", "lwip_tcb62", "lwip_tcb63", "lwip_tcb64", "lwip_tcb65", "lwip_tcb66", "lwip_tcb67", "lwip_tcb68", "lwip_tcb69", "lwip_tcb70",
+  "lwip_tcb71", "lwip_tcb72", "lwip_tcb73", "lwip_tcb74", "lwip_tcb75", "lwip_tcb76", "lwip_tcb77", "lwip_tcb78", "lwip_tcb79", "lwip_tcb80",
+  "lwip_tcb81", "lwip_tcb82", "lwip_tcb83", "lwip_tcb84", "lwip_tcb85", "lwip_tcb86", "lwip_tcb87", "lwip_tcb88", "lwip_tcb89", "lwip_tcb90",
+  "lwip_tcb91", "lwip_tcb92", "lwip_tcb93", "lwip_tcb94", "lwip_tcb95", "lwip_tcb96", "lwip_tcb97", "lwip_tcb98", "lwip_tcb99", "lwip_tcb100",
+};
+static CPU_CHAR tcb_ptr = 0;
+
 void sys_init(void)
 {
   u8_t i;
@@ -112,7 +137,7 @@ void sys_sem_signal(sys_sem_t sem)
   OSAPISemSignal(sem, OS_OPT_POST_1, &err);
   if (err != OS_ERR_NONE)
   {
-	  //fprintf(stderr, "ReleaseSemaphore error: %d\n", err);
+	  fprintf(stderr, "ReleaseSemaphore error: %d\n", err);
 	  printf("signal filed!\n");
   }
 

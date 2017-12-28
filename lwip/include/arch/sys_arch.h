@@ -43,6 +43,8 @@ typedef HANDLE sys_thread_t;
 ***********************************************************************************
 */
 typedef OS_TCB* sys_thread_t;
+
+
 #define SYS_MBOX_NULL   (sys_mbox_t)0
 #define SYS_SEM_NULL    (sys_sem_t)0
 

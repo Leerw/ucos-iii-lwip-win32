@@ -34,6 +34,8 @@ static CPU_CHAR sem_ptr = 0;
 * has no argument sys_thread_t, so we cannot return a sys_thread_t in the function because if we create   *
 * a temporary variable thread with type sys_thread_t, we cannoot return a sys_thread_t pointer outside    *
 *                    So I decided to create a thread pool to avoid this problem                           *
+*                                          date: 2017-12-27                                               *
+*                                             by: leerw                                                   *
 ***********************************************************************************************************
 */
 OS_TCB lwip_tcbs[100];
